@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, My Star!</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="night-sky">
+        <h1>Happy Birthday, My Star!</h1>
+        
+        <!-- Audio player -->
+        <div class="audio-container">
+            <audio id="background-music" loop>
+                <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+            <button id="music-toggle" aria-label="Play background music">
+                <span class="play-icon">▶</span>
+                <span class="pause-icon">⏸</span>
+            </button>
+        </div>
+        
+        <!-- Constellation lines -->
+        <div class="constellation-line" id="line1-2"></div>
+        <div class="constellation-line" id="line2-3"></div>
+        <div class="constellation-line" id="line3-5"></div>
+        <div class="constellation-line" id="line5-4"></div>
+        <div class="constellation-line" id="line4-1"></div>
+        
+        <!-- Star 1 -->
+        <div class="star" id="star1" tabindex="0" style="top: 25%; left: 20%;">
+            <div class="star-core"></div>
+            <div class="message-box" id="message1" role="tooltip">
+                <p>You light up my world every day!</p>
+                <img src="https://source.unsplash.com/300x200/?starry-sky" alt="Starry sky" class="message-image">
+            </div>
+        </div>
+        
+        <!-- Star 2 -->
+        <div class="star" id="star2" tabindex="0" style="top: 40%; left: 35%;">
+            <div class="star-core"></div>
+            <div class="message-box" id="message2" role="tooltip">
+                <p>Your smile is like the brightest star in the sky.</p>
+                <img src="https://source.unsplash.com/300x200/?galaxy" alt="Galaxy" class="message-image">
+            </div>
+        </div>
+        
+        <!-- Star 3 -->
+        <div class="star" id="star3" tabindex="0" style="top: 30%; left: 60%;">
+            <div class="star-core"></div>
+            <div class="message-box" id="message3" role="tooltip">
+                <p>Every moment with you feels magical.</p>
+                <img src="https://source.unsplash.com/300x200/?milky-way" alt="Milky Way" class="message-image">
+            </div>
+        </div>
+        
+        <!-- Star 4 -->
+        <div class="star" id="star4" tabindex="0" style="top: 60%; left: 25%;">
+            <div class="star-core"></div>
+            <div class="message-box" id="message4" role="tooltip">
+                <p>You make every day an adventure worth living.</p>
+                <img src="https://source.unsplash.com/300x200/?constellation" alt="Constellation" class="message-image">
+            </div>
+        </div>
+        
+        <!-- Star 5 -->
+        <div class="star" id="star5" tabindex="0" style="top: 65%; left: 70%;">
+            <div class="star-core"></div>
+            <div class="message-box" id="message5" role="tooltip">
+                <p>Your laughter is my favorite sound in the universe.</p>
+                <img src="https://source.unsplash.com/300x200/?stars" alt="Stars" class="message-image">
+            </div>
+        </div>
+        
+        <!-- Main celestial body (Moon) -->
+        <div class="moon" tabindex="0">
+            <div class="message-box moon-message" role="tooltip">
+                <h2>Happy Birthday!</h2>
+                <p>Like the stars in the night sky, you bring light, wonder, and beauty to my life. Thank you for being the amazing person you are. I'm so grateful to celebrate another year with you!</p>
+                <img src="https://source.unsplash.com/300x200/?birthday" alt="Birthday celebration" class="message-image">
+            </div>
+        </div>
+        
+        <!-- Landscape silhouette -->
+        <div class="landscape-silhouette"></div>
+        
+        <!-- Tree silhouette -->
+        <div class="tree"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
