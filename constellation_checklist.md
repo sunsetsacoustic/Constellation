@@ -148,3 +148,36 @@
 *   Accessibility features make the site usable for everyone and show extra thoughtfulness.
 *   Have fun with it! She'll appreciate the effort and thought you put into every detail.
 ---
+
+# Orion Constellation Facts
+
+Orion is one of the most recognizable constellations in the night sky. It's named after a hunter from Greek mythology.
+
+## Stars in Custom Orion Formation
+
+In this birthday page, the 5 custom stars are arranged to form the key points of Orion:
+
+1. **Betelgeuse** (Top Left, Reddish) - One of the brightest stars in the night sky and a red supergiant
+2. **Bellatrix** (Top Right) - The "Amazon Star," a blue-white giant
+3. **Alnilam** (Center) - The middle star in Orion's Belt
+4. **Rigel** (Bottom Right, Bluish) - A blue supergiant and the brightest star in Orion
+5. **Saiph** (Bottom Left) - A blue supergiant forming the "right knee" of Orion
+
+## Interesting Facts About Orion
+
+- Orion is visible throughout the world and is one of the most universally recognized constellations
+- Orion's Belt consists of three stars in a straight line: Alnitak, Alnilam, and Mintaka
+- Betelgeuse is a red supergiant that could explode as a supernova at any time
+- The Orion Nebula (M42) is visible as a fuzzy patch below Orion's Belt
+- In Greek mythology, Orion was a mighty hunter who boasted he could kill any animal
+- Different cultures have different interpretations - ancient Egyptians associated it with Osiris, while in Hungarian folklore it's known as "Archer" or "Reaper"
+
+## Navigation Using Orion
+
+Orion is excellent for navigation in the night sky:
+- Follow Orion's Belt to the southeast to find Sirius, the brightest star in our sky
+- Follow the Belt to the northwest to find Aldebaran, the eye of Taurus the Bull
+- A line from Rigel through Betelgeuse points to Castor and Pollux in Gemini
+- Orion is most visible in the night sky during winter in the Northern Hemisphere and summer in the Southern Hemisphere
+
+The personalized message stars are positioned to match this legendary constellation, making your birthday wishes shine among the stars of one of the sky's most beautiful and recognizable patterns!

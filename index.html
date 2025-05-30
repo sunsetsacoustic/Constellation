@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A celestial birthday greeting with a beautiful starry night sky featuring the Orion constellation.">
     <title>Happy Birthday, My Star!</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -13,7 +14,7 @@
         <!-- Audio player -->
         <div class="audio-container">
             <audio id="background-music" loop>
-                <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+                <source src="https://audio.jukehost.co.uk/IWZA44AKi8J59PzH8Byx2EsNXnJa8A6d" type="audio/mpeg">
                 Your browser does not support the audio element.
             </audio>
             <button id="music-toggle" aria-label="Play background music">
@@ -22,74 +23,49 @@
             </button>
         </div>
         
-        <!-- Starmap controls -->
-        <div class="starmap-controls">
-            <select id="constellation-select">
-                <option value="">Select a constellation...</option>
-                <option value="orion">Orion</option>
-                <option value="ursa-major">Ursa Major (Big Dipper)</option>
-                <option value="cassiopeia">Cassiopeia</option>
-                <option value="lyra">Lyra</option>
-                <option value="cygnus">Cygnus</option>
-                <option value="gemini">Gemini</option>
-                <option value="leo">Leo</option>
-                <option value="scorpius">Scorpius</option>
-            </select>
-            <button id="toggle-custom-stars">Toggle Custom Stars</button>
-        </div>
-        
-        <!-- Real starmap container -->
-        <div id="starmap-container"></div>
-        
-        <!-- Constellation lines -->
-        <div class="constellation-line" id="line1-2"></div>
-        <div class="constellation-line" id="line2-3"></div>
-        <div class="constellation-line" id="line3-5"></div>
-        <div class="constellation-line" id="line5-4"></div>
-        <div class="constellation-line" id="line4-1"></div>
-        
-        <!-- Star 1 -->
-        <div class="star custom-star" id="star1" tabindex="0" style="top: 25%; left: 20%;">
+        <!-- Custom stars positioned to form Orion -->
+        <!-- Betelgeuse (top left shoulder) -->
+        <div class="star custom-star" id="star1" tabindex="0" style="top: 25%; left: 30%;">
             <div class="star-core"></div>
             <div class="message-box" id="message1" role="tooltip">
                 <p>You light up my world every day!</p>
-                <img src="https://source.unsplash.com/300x200/?starry-sky" alt="Starry sky" class="message-image">
+                <img src="https://images.pexels.com/photos/957061/milky-way-starry-sky-night-sky-star-957061.jpeg?auto=compress&cs=tinysrgb&w=300" alt="Starry sky" class="message-image">
             </div>
         </div>
         
-        <!-- Star 2 -->
-        <div class="star custom-star" id="star2" tabindex="0" style="top: 40%; left: 35%;">
+        <!-- Rigel (bottom right foot) -->
+        <div class="star custom-star" id="star2" tabindex="0" style="top: 65%; left: 25%;">
             <div class="star-core"></div>
             <div class="message-box" id="message2" role="tooltip">
                 <p>Your smile is like the brightest star in the sky.</p>
-                <img src="https://source.unsplash.com/300x200/?galaxy" alt="Galaxy" class="message-image">
+                <img src="https://images.pexels.com/photos/1257860/pexels-photo-1257860.jpeg?auto=compress&cs=tinysrgb&w=300" alt="Galaxy" class="message-image">
             </div>
         </div>
         
-        <!-- Star 3 -->
-        <div class="star custom-star" id="star3" tabindex="0" style="top: 30%; left: 60%;">
+        <!-- Alnilam (middle belt star) -->
+        <div class="star custom-star" id="star3" tabindex="0" style="top: 45%; left: 40%;">
             <div class="star-core"></div>
             <div class="message-box" id="message3" role="tooltip">
                 <p>Every moment with you feels magical.</p>
-                <img src="https://source.unsplash.com/300x200/?milky-way" alt="Milky Way" class="message-image">
+                <img src="https://images.pexels.com/photos/998641/pexels-photo-998641.jpeg?auto=compress&cs=tinysrgb&w=300" alt="Milky Way" class="message-image">
             </div>
         </div>
         
-        <!-- Star 4 -->
-        <div class="star custom-star" id="star4" tabindex="0" style="top: 60%; left: 25%;">
+        <!-- Bellatrix (top right shoulder) -->
+        <div class="star custom-star" id="star4" tabindex="0" style="top: 30%; left: 20%;">
             <div class="star-core"></div>
             <div class="message-box" id="message4" role="tooltip">
                 <p>You make every day an adventure worth living.</p>
-                <img src="https://source.unsplash.com/300x200/?constellation" alt="Constellation" class="message-image">
+                <img src="https://images.pexels.com/photos/1252873/pexels-photo-1252873.jpeg?auto=compress&cs=tinysrgb&w=300" alt="Constellation" class="message-image">
             </div>
         </div>
         
-        <!-- Star 5 -->
-        <div class="star custom-star" id="star5" tabindex="0" style="top: 65%; left: 70%;">
+        <!-- Saiph (bottom left foot) -->
+        <div class="star custom-star" id="star5" tabindex="0" style="top: 65%; left: 45%;">
             <div class="star-core"></div>
             <div class="message-box" id="message5" role="tooltip">
                 <p>Your laughter is my favorite sound in the universe.</p>
-                <img src="https://source.unsplash.com/300x200/?stars" alt="Stars" class="message-image">
+                <img src="https://images.pexels.com/photos/1169754/pexels-photo-1169754.jpeg?auto=compress&cs=tinysrgb&w=300" alt="Stars" class="message-image">
             </div>
         </div>
         
@@ -98,18 +74,15 @@
             <div class="message-box moon-message" role="tooltip">
                 <h2>Happy Birthday!</h2>
                 <p>Like the stars in the night sky, you bring light, wonder, and beauty to my life. Thank you for being the amazing person you are. I'm so grateful to celebrate another year with you!</p>
-                <img src="https://source.unsplash.com/300x200/?birthday" alt="Birthday celebration" class="message-image">
+                <img src="https://images.pexels.com/photos/2072148/pexels-photo-2072148.jpeg?auto=compress&cs=tinysrgb&w=300" alt="Birthday celebration" class="message-image">
             </div>
         </div>
         
-        <!-- Landscape silhouette -->
+        <!-- Landscape and mountains silhouette -->
         <div class="landscape-silhouette"></div>
-        
-        <!-- Tree silhouette -->
-        <div class="tree"></div>
+        <div class="mountains"></div>
     </div>
 
     <script src="script.js"></script>
-    <script src="starmap.js"></script>
 </body>
 </html> 

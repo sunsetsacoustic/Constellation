@@ -4,57 +4,49 @@ document.addEventListener('DOMContentLoaded', () => {
     const stars = document.querySelectorAll('.star');
     const moon = document.querySelector('.moon');
     const nightSky = document.querySelector('.night-sky');
+    const customStars = document.querySelectorAll('.custom-star');
     
-    // Get constellation lines
-    const line1to2 = document.getElementById('line1-2');
-    const line2to3 = document.getElementById('line2-3');
-    const line3to5 = document.getElementById('line3-5');
-    const line5to4 = document.getElementById('line5-4');
-    const line4to1 = document.getElementById('line4-1');
+    // Create animated stars container
+    const starsContainer = document.createElement('div');
+    starsContainer.className = 'stars-container';
+    nightSky.appendChild(starsContainer);
     
-    // Draw constellation lines
-    function drawConstellationLines() {
-        if (stars.length < 5) return;
+    // Generate hundreds of stars with different sizes and random positions
+    function generateStars() {
+        // Define star counts by size
+        const starCounts = {
+            tiny: 300,
+            small: 200,
+            medium: 100,
+            large: 50
+        };
         
-        drawLine(stars[0], stars[1], line1to2);
-        drawLine(stars[1], stars[2], line2to3);
-        drawLine(stars[2], stars[4], line3to5);
-        drawLine(stars[4], stars[3], line5to4);
-        drawLine(stars[3], stars[0], line4to1);
+        // Generate stars for each size
+        Object.entries(starCounts).forEach(([size, count]) => {
+            for (let i = 0; i < count; i++) {
+                const star = document.createElement('div');
+                star.className = `animated-star ${size}`;
+                
+                // Set random position
+                star.style.top = `${Math.random() * 90}%`;
+                star.style.left = `${Math.random() * 98}%`;
+                
+                // Add random animation delay for better twinkling effect
+                star.style.animationDelay = `${Math.random() * 5}s`;
+                
+                // For some stars, add a slight color tint
+                if (Math.random() > 0.8) {
+                    const hue = Math.random() > 0.5 ? '60, 100%, 90%' : '200, 70%, 90%';
+                    star.style.backgroundColor = `hsl(${hue})`;
+                }
+                
+                starsContainer.appendChild(star);
+            }
+        });
     }
     
-    // Function to draw a line between two stars
-    function drawLine(fromStar, toStar, lineElement) {
-        if (!fromStar || !toStar || !lineElement) return;
-        
-        // Get star positions
-        const rect1 = fromStar.getBoundingClientRect();
-        const rect2 = toStar.getBoundingClientRect();
-        
-        // Calculate center points
-        const x1 = rect1.left + rect1.width / 2;
-        const y1 = rect1.top + rect1.height / 2;
-        const x2 = rect2.left + rect2.width / 2;
-        const y2 = rect2.top + rect2.height / 2;
-        
-        // Calculate distance between points
-        const length = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
-        
-        // Calculate angle
-        const angle = Math.atan2(y2 - y1, x2 - x1) * 180 / Math.PI;
-        
-        // Set line position and dimensions
-        lineElement.style.width = `${length}px`;
-        lineElement.style.left = `${x1}px`;
-        lineElement.style.top = `${y1}px`;
-        lineElement.style.transform = `rotate(${angle}deg)`;
-    }
-    
-    // Initial draw of constellation lines
-    drawConstellationLines();
-    
-    // Redraw constellation lines on window resize
-    window.addEventListener('resize', drawConstellationLines);
+    // Generate stars
+    generateStars();
     
     // Audio player elements
     const backgroundMusic = document.getElementById('background-music');
@@ -94,6 +86,73 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+    
+    // Create Orion constellation lines between custom stars
+    function drawOrionConstellationLines() {
+        // Define the connections for Orion pattern
+        const connections = [
+            [0, 3], // Betelgeuse to Bellatrix (shoulders)
+            [3, 2], // Bellatrix to Alnilam (right shoulder to belt)
+            [0, 2], // Betelgeuse to Alnilam (left shoulder to belt)
+            [2, 4], // Alnilam to Saiph (belt to bottom left)
+            [2, 1], // Alnilam to Rigel (belt to bottom right)
+            [4, 1]  // Saiph to Rigel (bottom of constellation)
+        ];
+        
+        // Create and append constellation lines
+        connections.forEach(connection => {
+            if (stars.length >= 5) {
+                const star1 = stars[connection[0]];
+                const star2 = stars[connection[1]];
+                
+                if (star1 && star2) {
+                    const line = document.createElement('div');
+                    line.className = 'constellation-line custom-constellation-line';
+                    
+                    // Append line to document
+                    nightSky.appendChild(line);
+                    
+                    // Position the line (delay slightly to ensure stars are positioned)
+                    setTimeout(() => {
+                        positionLine(star1, star2, line);
+                    }, 100);
+                }
+            }
+        });
+    }
+    
+    // Position a line between two stars
+    function positionLine(star1, star2, lineElement) {
+        const rect1 = star1.getBoundingClientRect();
+        const rect2 = star2.getBoundingClientRect();
+        
+        // Calculate center points
+        const x1 = rect1.left + rect1.width / 2;
+        const y1 = rect1.top + rect1.height / 2;
+        const x2 = rect2.left + rect2.width / 2;
+        const y2 = rect2.top + rect2.height / 2;
+        
+        // Calculate distance and angle
+        const length = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+        const angle = Math.atan2(y2 - y1, x2 - x1) * 180 / Math.PI;
+        
+        // Position line
+        lineElement.style.width = `${length}px`;
+        lineElement.style.left = `${x1}px`;
+        lineElement.style.top = `${y1}px`;
+        lineElement.style.transform = `rotate(${angle}deg)`;
+    }
+    
+    // Call drawOrionConstellationLines after a slight delay to ensure elements are rendered
+    setTimeout(drawOrionConstellationLines, 500);
+    
+    // Redraw lines on window resize
+    window.addEventListener('resize', () => {
+        // Remove existing custom constellation lines
+        document.querySelectorAll('.custom-constellation-line').forEach(line => line.remove());
+        // Redraw the lines
+        drawOrionConstellationLines();
+    });
     
     // Function to create a shooting star
     function createShootingStar() {
@@ -140,37 +199,6 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Initialize shooting stars
     scheduleShootingStars();
-    
-    // Add some extra bright stars that twinkle differently
-    function createExtraBrightStar() {
-        const brightStar = document.createElement('div');
-        brightStar.classList.add('star-core', 'extra-bright');
-        
-        // Random position
-        const top = 5 + Math.random() * 60; // Keep within upper part of sky
-        const left = Math.random() * 90 + 5; // Avoid edges
-        
-        // Set styles
-        brightStar.style.position = 'absolute';
-        brightStar.style.top = `${top}%`;
-        brightStar.style.left = `${left}%`;
-        brightStar.style.width = '2px';
-        brightStar.style.height = '2px';
-        brightStar.style.backgroundColor = '#fff';
-        brightStar.style.borderRadius = '50%';
-        brightStar.style.boxShadow = '0 0 10px 2px rgba(255, 255, 255, 0.9), 0 0 20px 5px rgba(255, 255, 255, 0.5)';
-        
-        // Add random animation delay for better effect
-        brightStar.style.animationDelay = `${Math.random() * 5}s`;
-        
-        // Add to night sky
-        nightSky.appendChild(brightStar);
-    }
-    
-    // Create 10 extra bright stars
-    for (let i = 0; i < 10; i++) {
-        createExtraBrightStar();
-    }
     
     // Toggle message visibility on click for accessibility
     function toggleMessage(element) {
