@@ -502,4 +502,92 @@ h1 {
     to {
         opacity: 1;
     }
+}
+
+/* Starmap controls */
+.starmap-controls {
+    position: relative;
+    z-index: 3;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    display: flex;
+    gap: 10px;
+}
+
+#constellation-select {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    color: white;
+    padding: 8px 15px;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+#constellation-select:hover, #constellation-select:focus {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+#toggle-custom-stars {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    color: white;
+    padding: 8px 15px;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+#toggle-custom-stars:hover, #toggle-custom-stars:focus {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+/* Real starmap container */
+#starmap-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Real star styles */
+.real-star {
+    position: absolute;
+    border-radius: 50%;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease;
+    z-index: 1;
+}
+
+.real-star-label {
+    position: absolute;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.7rem;
+    transform: translate(10px, -50%);
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.real-constellation-line {
+    position: absolute;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.2);
+    transform-origin: 0 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Hide custom stars when viewing real constellations */
+.custom-star.hidden {
+    display: none;
 } 

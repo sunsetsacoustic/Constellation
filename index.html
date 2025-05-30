@@ -22,6 +22,25 @@
             </button>
         </div>
         
+        <!-- Starmap controls -->
+        <div class="starmap-controls">
+            <select id="constellation-select">
+                <option value="">Select a constellation...</option>
+                <option value="orion">Orion</option>
+                <option value="ursa-major">Ursa Major (Big Dipper)</option>
+                <option value="cassiopeia">Cassiopeia</option>
+                <option value="lyra">Lyra</option>
+                <option value="cygnus">Cygnus</option>
+                <option value="gemini">Gemini</option>
+                <option value="leo">Leo</option>
+                <option value="scorpius">Scorpius</option>
+            </select>
+            <button id="toggle-custom-stars">Toggle Custom Stars</button>
+        </div>
+        
+        <!-- Real starmap container -->
+        <div id="starmap-container"></div>
+        
         <!-- Constellation lines -->
         <div class="constellation-line" id="line1-2"></div>
         <div class="constellation-line" id="line2-3"></div>
@@ -30,7 +49,7 @@
         <div class="constellation-line" id="line4-1"></div>
         
         <!-- Star 1 -->
-        <div class="star" id="star1" tabindex="0" style="top: 25%; left: 20%;">
+        <div class="star custom-star" id="star1" tabindex="0" style="top: 25%; left: 20%;">
             <div class="star-core"></div>
             <div class="message-box" id="message1" role="tooltip">
                 <p>You light up my world every day!</p>
@@ -39,7 +58,7 @@
         </div>
         
         <!-- Star 2 -->
-        <div class="star" id="star2" tabindex="0" style="top: 40%; left: 35%;">
+        <div class="star custom-star" id="star2" tabindex="0" style="top: 40%; left: 35%;">
             <div class="star-core"></div>
             <div class="message-box" id="message2" role="tooltip">
                 <p>Your smile is like the brightest star in the sky.</p>
@@ -48,7 +67,7 @@
         </div>
         
         <!-- Star 3 -->
-        <div class="star" id="star3" tabindex="0" style="top: 30%; left: 60%;">
+        <div class="star custom-star" id="star3" tabindex="0" style="top: 30%; left: 60%;">
             <div class="star-core"></div>
             <div class="message-box" id="message3" role="tooltip">
                 <p>Every moment with you feels magical.</p>
@@ -57,7 +76,7 @@
         </div>
         
         <!-- Star 4 -->
-        <div class="star" id="star4" tabindex="0" style="top: 60%; left: 25%;">
+        <div class="star custom-star" id="star4" tabindex="0" style="top: 60%; left: 25%;">
             <div class="star-core"></div>
             <div class="message-box" id="message4" role="tooltip">
                 <p>You make every day an adventure worth living.</p>
@@ -66,7 +85,7 @@
         </div>
         
         <!-- Star 5 -->
-        <div class="star" id="star5" tabindex="0" style="top: 65%; left: 70%;">
+        <div class="star custom-star" id="star5" tabindex="0" style="top: 65%; left: 70%;">
             <div class="star-core"></div>
             <div class="message-box" id="message5" role="tooltip">
                 <p>Your laughter is my favorite sound in the universe.</p>
@@ -91,5 +110,6 @@
     </div>
 
     <script src="script.js"></script>
+    <script src="starmap.js"></script>
 </body>
 </html> 
