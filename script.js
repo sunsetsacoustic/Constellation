@@ -6,6 +6,115 @@ document.addEventListener('DOMContentLoaded', () => {
     const nightSky = document.querySelector('.night-sky');
     const customStars = document.querySelectorAll('.custom-star');
     
+    // Initialize particles.js
+    if (window.particlesJS) {
+        particlesJS('particles-js', {
+            "particles": {
+                "number": {
+                    "value": 100,
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "color": {
+                    "value": "#ffffff"
+                },
+                "shape": {
+                    "type": "circle",
+                    "stroke": {
+                        "width": 0,
+                        "color": "#000000"
+                    },
+                    "polygon": {
+                        "nb_sides": 5
+                    }
+                },
+                "opacity": {
+                    "value": 0.7,
+                    "random": true,
+                    "anim": {
+                        "enable": true,
+                        "speed": 1,
+                        "opacity_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "size": {
+                    "value": 2,
+                    "random": true,
+                    "anim": {
+                        "enable": true,
+                        "speed": 2,
+                        "size_min": 0.3,
+                        "sync": false
+                    }
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 120,
+                    "color": "#ffffff",
+                    "opacity": 0.2,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 0.5,
+                    "direction": "none",
+                    "random": true,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false,
+                    "attract": {
+                        "enable": true,
+                        "rotateX": 600,
+                        "rotateY": 1200
+                    }
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "grab"
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push"
+                    },
+                    "resize": true
+                },
+                "modes": {
+                    "grab": {
+                        "distance": 140,
+                        "line_linked": {
+                            "opacity": 0.5
+                        }
+                    },
+                    "bubble": {
+                        "distance": 400,
+                        "size": 4,
+                        "duration": 2,
+                        "opacity": 0.8,
+                        "speed": 3
+                    },
+                    "repulse": {
+                        "distance": 200,
+                        "duration": 0.4
+                    },
+                    "push": {
+                        "particles_nb": 4
+                    },
+                    "remove": {
+                        "particles_nb": 2
+                    }
+                }
+            },
+            "retina_detect": true
+        });
+    }
+    
     // Create animated stars container
     const starsContainer = document.createElement('div');
     starsContainer.className = 'stars-container';
@@ -13,12 +122,12 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Generate hundreds of stars with different sizes and random positions
     function generateStars() {
-        // Define star counts by size
+        // Define star counts by size (reduced because we have particles.js now)
         const starCounts = {
-            tiny: 300,
-            small: 200,
-            medium: 100,
-            large: 50
+            tiny: 150,
+            small: 100,
+            medium: 50,
+            large: 25
         };
         
         // Generate stars for each size
@@ -40,6 +149,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     star.style.backgroundColor = `hsl(${hue})`;
                 }
                 
+                // Add data attribute for parallax effect
+                // Different layers will move at different speeds
+                star.dataset.parallaxDepth = size === 'tiny' ? 0.2 : 
+                                          size === 'small' ? 0.4 : 
+                                          size === 'medium' ? 0.6 : 0.8;
+                
                 starsContainer.appendChild(star);
             }
         });
@@ -47,6 +162,56 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Generate stars
     generateStars();
+    
+    // Add parallax effect to stars on mouse move
+    function handleParallax(e) {
+        const centerX = window.innerWidth / 2;
+        const centerY = window.innerHeight / 2;
+        const mouseX = e.clientX;
+        const mouseY = e.clientY;
+        
+        // Calculate mouse distance from center as percentage (-1 to 1)
+        const offsetX = (mouseX - centerX) / centerX;
+        const offsetY = (mouseY - centerY) / centerY;
+        
+        // Apply different movement based on star size (parallax depth)
+        document.querySelectorAll('.animated-star').forEach(star => {
+            const depth = parseFloat(star.dataset.parallaxDepth);
+            const translateX = offsetX * 25 * depth;
+            const translateY = offsetY * 25 * depth;
+            
+            star.style.transform = `translate(${translateX}px, ${translateY}px)`;
+        });
+        
+        // Apply subtle effect to custom stars (constellation) too
+        stars.forEach(star => {
+            const translateX = offsetX * 5;
+            const translateY = offsetY * 5;
+            star.style.transform = `translate(${translateX}px, ${translateY}px)`;
+        });
+        
+        // Add subtle movement to the moon
+        if (moon) {
+            const translateX = offsetX * -10; // Move opposite direction for dramatic effect
+            const translateY = offsetY * -10;
+            moon.style.transform = `translate(${translateX}px, ${translateY}px) scale(1)`;
+        }
+    }
+    
+    // Throttle function to limit how often the parallax effect is calculated
+    function throttle(callback, delay) {
+        let previousCall = Date.now();
+        return function() {
+            const time = Date.now();
+            if ((time - previousCall) >= delay) {
+                previousCall = time;
+                callback.apply(null, arguments);
+            }
+        };
+    }
+    
+    // Add throttled mousemove event listener
+    document.addEventListener('mousemove', throttle(handleParallax, 30));
     
     // Audio player elements
     const backgroundMusic = document.getElementById('background-music');
