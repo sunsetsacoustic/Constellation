@@ -731,4 +731,12 @@ h1 {
     to {
         text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 20px rgba(120, 160, 255, 0.4);
     }
+}
+
+@media (max-width: 600px) {
+  #star1 { left: 10% !important; top: 20% !important; }
+  #star2 { left: 20% !important; top: 65% !important; }
+  #star3 { left: 50% !important; top: 45% !important; }
+  #star4 { left: 80% !important; top: 25% !important; }
+  #star5 { left: 70% !important; top: 70% !important; }
 } 
